@@ -11,4 +11,10 @@ public class Events {
 	public static final String WHITE_BOARD_UNDO_REDO = "undo_redo";
 
 	public static final String WHITE_BOARD_TEXT_EDIT = "text_edit";
+
+	public String value;
+
+	public Events(String value) {
+		this.value = value;
+	}
 }

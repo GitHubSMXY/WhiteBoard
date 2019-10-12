@@ -6,8 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
-import com.github.guanpy.library.EventBus;
-
 import butterknife.ButterKnife;
 
 /**
@@ -19,7 +17,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(this.getLayoutId());
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         this.afterCreate(savedInstanceState);
 
     }
@@ -35,13 +33,11 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        EventBus.registerAnnotatedReceiver(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        EventBus.unregisterAnnotatedReceiver(this);
     }
 
     public void navi2Page(final Class<?> page) {

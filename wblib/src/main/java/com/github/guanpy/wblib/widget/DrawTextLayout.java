@@ -9,13 +9,14 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
-import com.github.guanpy.library.EventBus;
 import com.github.guanpy.wblib.R;
 import com.github.guanpy.wblib.bean.DrawPoint;
 import com.github.guanpy.wblib.bean.DrawTextPoint;
 import com.github.guanpy.wblib.utils.Events;
 import com.github.guanpy.wblib.utils.OperationUtils;
 import com.github.guanpy.wblib.utils.WhiteBoardVariable;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * 白板--文字层
@@ -148,7 +149,7 @@ public class DrawTextLayout extends FrameLayout {
         }
         if(!TextUtils.isEmpty(drawPoint.getDrawText().getStr())){
             OperationUtils.getInstance().getSavePoints().add(drawPoint);
-            EventBus.postEvent(Events.WHITE_BOARD_UNDO_REDO);
+            EventBus.getDefault().post(new Events(Events.WHITE_BOARD_UNDO_REDO));
         }
         OperationUtils.getInstance().getDeletePoints().clear();
 

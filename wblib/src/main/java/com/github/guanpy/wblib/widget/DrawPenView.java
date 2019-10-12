@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.github.guanpy.library.EventBus;
 import com.github.guanpy.wblib.R;
 import com.github.guanpy.wblib.bean.DrawPenPoint;
 import com.github.guanpy.wblib.bean.DrawPenStr;
@@ -19,6 +18,8 @@ import com.github.guanpy.wblib.bean.DrawPoint;
 import com.github.guanpy.wblib.bean.Point;
 import com.github.guanpy.wblib.utils.Events;
 import com.github.guanpy.wblib.utils.OperationUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.Iterator;
 
@@ -207,7 +208,7 @@ public class DrawPenView extends View {
                     mDrawPath.setDrawPenStr(mDrawPenStr);
                     OperationUtils.getInstance().getSavePoints().add(mDrawPath);
                     OperationUtils.getInstance().getDeletePoints().clear();
-                    EventBus.postEvent(Events.WHITE_BOARD_UNDO_REDO);
+                    EventBus.getDefault().post(new Events(Events.WHITE_BOARD_UNDO_REDO));
                     mPath = null;
                     postInvalidate();
                     break;

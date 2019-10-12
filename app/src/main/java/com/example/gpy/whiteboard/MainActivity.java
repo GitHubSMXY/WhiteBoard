@@ -19,13 +19,14 @@ import com.github.guanpy.wblib.utils.OperationUtils;
 import java.io.File;
 import java.util.ArrayList;
 
-import butterknife.InjectView;
+import butterknife.BindView;
+
 
 public class MainActivity extends BaseActivity {
 
-    @InjectView(R.id.lv_wb)
+    @BindView(R.id.lv_wb)
     ListView mLv;
-    @InjectView(R.id.iv_wb_add)
+    @BindView(R.id.iv_wb_add)
     ImageView mIvAdd;
 
 

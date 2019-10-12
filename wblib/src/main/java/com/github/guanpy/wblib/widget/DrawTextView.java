@@ -16,11 +16,12 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.github.guanpy.library.EventBus;
 import com.github.guanpy.wblib.R;
 import com.github.guanpy.wblib.bean.DrawPoint;
 import com.github.guanpy.wblib.utils.Events;
 import com.github.guanpy.wblib.utils.OperationUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 
 public class DrawTextView extends RelativeLayout implements
@@ -232,7 +233,7 @@ public class DrawTextView extends RelativeLayout implements
                 mBtTextEdit.setVisibility(View.GONE);
                 mEtTextEdit.setSelection(mEtTextEdit.getText().length());
                 mBtTextDelete.setVisibility(View.GONE);
-                EventBus.postEvent(Events.WHITE_BOARD_TEXT_EDIT);
+                EventBus.getDefault().post(new Events(Events.WHITE_BOARD_TEXT_EDIT));
                 showSoftKeyBoard(mEtTextEdit);
                 break;
             case TEXT_DETAIL:
